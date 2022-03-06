@@ -6,7 +6,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, InputRequired, Length, Email, EqualTo, ValidationError
 from flask_login import login_user, login_required, logout_user, current_user
-# from flask_wtf.csrf import CSRFProtect
+from flask_wtf.csrf import CSRFProtect
 from flask_bcrypt import Bcrypt
 from datetime import datetime
 from chat import get_response
@@ -55,9 +55,9 @@ app.secret_key = os.urandom(24)
 db = SQLAlchemy(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 bcrypt = Bcrypt(app)
-# csrf=CSRFProtect(app)
+csrf=CSRFProtect(app)
 app.config['Secret_Key'] = 'apple'
-# app.config['WTF_CSRF_SECRET_KEY'] = "secretkey"
+app.config['WTF_CSRF_SECRET_KEY'] = "secretkey"
 app.config['TESTING'] = False
 
 login_manager = LoginManager()
