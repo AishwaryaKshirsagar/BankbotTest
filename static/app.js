@@ -19,6 +19,7 @@ class Chatbox {
 
         const node = chatBox.querySelector('input');
         node.addEventListener("keyup", ({key}) => {
+            event.preventDefault()
             if (key === "Enter") {
                 this.onSendButton(chatBox)
             }
